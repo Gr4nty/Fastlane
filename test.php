@@ -1,13 +1,20 @@
 <?php
-$url = 'http://localhost/Fastlane/profile/user/id/4/format/json';
+if (@$_GET["id"] <= null) {
+    $id = 99999999;
+}else{
+$id = $_GET["id"];
+}
+$url = 'http://localhost/Fastlane/profile/user/id/'.$id.'/format/json';
 $auth = 'X-API-KEY: admin';
 
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array($auth));
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $buffer = curl_exec($ch);
+    $handle = curl_init();
+    // Set
+    curl_setopt($handle, CURLOPT_URL, $url);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($handle, CURLOPT_HTTPHEADER, array($auth));
+    curl_setopt($handle, CURLOPT_URL, $url);
+    $buffer = curl_exec($handle);
 
     echo $buffer;
     
