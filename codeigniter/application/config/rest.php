@@ -47,7 +47,7 @@ $config['enable_emulate_request'] = TRUE;
 |	E.g: My Secret REST API
 |
 */
-$config['rest_realm'] = 'REST API';
+$config['rest_realm'] = 'FastlaneAPI';
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +59,7 @@ $config['rest_realm'] = 'REST API';
 |	'' = no login required, 'basic' = unsecure login, 'digest' = more secure login
 |
 */
-$config['rest_auth'] = false;
+$config['rest_auth'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ $config['auth_source'] = 'ldap';
 |	array('admin' => '1234')
 |
 */
-$config['rest_valid_logins'] = array('admin' => '1234');
+$config['rest_valid_logins'] = array('admin' => 'admin');
 
 /*
 |--------------------------------------------------------------------------
@@ -187,7 +187,7 @@ $config['rest_keys_table'] = 'keys';
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_keys'] = FALSE;
+$config['rest_enable_keys'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -261,7 +261,7 @@ $config['rest_logs_table'] = 'logs';
 	) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_logging'] = FALSE;
+$config['rest_enable_logging'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

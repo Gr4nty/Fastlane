@@ -8,17 +8,22 @@ require APPPATH . '/libraries/REST_Controller.php';
 class profile extends REST_Controller {
 
     function user_get() {
-        if (!$this->get('id')) {
-            $this->response(NULL, 400);
+        if (!$this->get('id')) 
+        {
+            $this->response(NULL, 500);
         }
-
+        // autoload later
         $this->load->model('profile_model');
-
+        // user data from db
         $user = $this->profile_model->getUserByID($this->get('id'));
 
-        if ($user) {
+        if ($user) 
+        {
             $this->response($user, 200); // 200 being the HTTP response code
-        } else {
+        }
+  
+        else 
+        {
             $this->response(array('error' => 'User could not be found'), 404);
         }
     }
