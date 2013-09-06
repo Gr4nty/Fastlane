@@ -15,6 +15,7 @@ $auth = 'X-API-KEY: admin';
     $buffer = curl_exec($handle);
     $user = json_decode($buffer);
 
+
         echo "Data:</br>";
         echo 'id=> '; echo $user->id;
         echo "<br>";
