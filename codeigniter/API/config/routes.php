@@ -37,9 +37,17 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+/*
+| -------------------------------------------------------------------------
+| CUSTOM ROUTES
+| -------------------------------------------------------------------------
+|
+*/
+
+$route['user/(:any)'] = "User/user/id/$1";
+$route['car/(:any)'] = "Car/car/id/$1";
 
 
 /* End of file routes.php */

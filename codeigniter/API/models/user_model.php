@@ -1,6 +1,6 @@
 <?php
 
-class view_model extends CI_Model {
+class user_model extends CI_Model {
 
     function getUserByID($id) {
         $q = $this->db->query("SELECT * FROM user WHERE id= $id");
