@@ -10,10 +10,11 @@ class user extends REST_Controller
         if(!$this->get('id') || is_numeric($this->get('id'))==false)
         {
         	$this->response(array('error' => 'Bad Request'), 400);
+        }else
+        {
+                $user = $this->user_model->getUserById( $this->get('id') );
         }
         
-        $user = $this->user_model->getUserById( $this->get('id') );
-    	
         if($user)
         {
             $this->response($user, 200); // 200 being the HTTP response code
@@ -27,9 +28,15 @@ class user extends REST_Controller
     
     function user_post()
     {
-        $this->user_model->updateUser( $this->get('id') );
+        if(!$this->get('fbid') || is_numeric($this->get('fbid'))==false)
+        {
+        	$this->response(array('error' => 'Bad Request'), 400);
+        }else
+        {
+                $message = $this->user_model->CreateUser($this->get('fbid'));
+                $this->response($message, 200); // 200 being the HTTP response code
+        }
         
-        $this->response($message, 200); // 200 being the HTTP response code
     }
     
 }

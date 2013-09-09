@@ -11,5 +11,21 @@ class user_model extends CI_Model {
             return $data;
         }
     }
+    
+    function CreateUser($fbid) {
+        $check = $this->db->query("SELECT * FROM user WHERE fbid= $fbid");
+        if ($check->num_rows() > 0) {
+            $data = '';
+            return $data;
+        }else
+        {  
+            $fname = 'testpost';
+            $fpass = 'posttest';
+        $q = $this->db->query("INSERT INTO user (fbid, username, password) VALUES ('$fbid', '$fname', '$fpass')");
+            $data = 'Success';
+            return $data;
+        }
+        
+    }
 
 }
