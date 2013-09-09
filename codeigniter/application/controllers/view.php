@@ -11,11 +11,18 @@ class view extends REST_Controller {
         if (!$this->get('id')) {
             $this->response(NULL, 500);
         }
+        if (is_numeric($this->get('id'))==true)
+        {
         // autoload later
         $this->load->model('view_model');
         // user data from db
         $user = $this->view_model->getUserByID($this->get('id'));
-
+        }else
+        {
+          $this->response(NULL, 500);  
+        }    
+        
+        
         if ($user) {
             $this->response($user, 200); // 200 being the HTTP response code
         } else {
