@@ -8,21 +8,25 @@ require APPPATH . '/libraries/REST_Controller.php';
 class view extends REST_Controller {
 
     function user_get() {
-        if (!$this->get('id')) {
+        // Check if it empty or not
+        if (!$this->get('id')) 
+        { 
             $this->response(NULL, 500);
         }
+        // Check if it is numeric or not
         if (is_numeric($this->get('id'))==true)
         {
         // autoload later
-        $this->load->model('view_model');
+            $this->load->model('view_model');
         // user data from db
-        $user = $this->view_model->getUserByID($this->get('id'));
-        }else
+            $user = $this->view_model->getUserByID($this->get('id'));
+        }
+        else
         {
-          $this->response(NULL, 500);  
+            $this->response(NULL, 500);  
         }    
         
-        
+        // Check if user exists or not
         if ($user) {
             $this->response($user, 200); // 200 being the HTTP response code
         } else {
