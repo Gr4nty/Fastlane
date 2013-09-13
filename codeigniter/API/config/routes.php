@@ -46,7 +46,7 @@ $route['404_override'] = '';
 |
 */
 
-$route['user/(:any)'] = "User/user/id/$1";
+$route['user/(:any)'] = "UserProfile/user/id/$1";
 $route['car/(:any)'] = "Car/car/id/$1";
 
 
