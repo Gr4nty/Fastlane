@@ -24,19 +24,31 @@ class UserProfile extends REST_Controller {
 
     // Get users
     function users_get() {
-        if ($this->get('limit') && is_numeric($this->get('limit')) == true) {
+            
+        if (is_string($this->get('all')) == true && $this->get('all') == '')
+        {
+            $users = $this->UserProfile_model->getUsers('0');        
+        }
+        else if (is_numeric($this->get('limit')) == true && $this->get('all') == false)
+        {
             $users = $this->UserProfile_model->getUsers($this->get('limit'));
-        } else if (!$this->get('limit')) {
-            $users = $this->UserProfile_model->getUsers('0');
-        } else {
+        }
+        else
+        {
             $this->response(array('error' => 'Bad Request'), 400);
         }
-
-        if ($users) {
+        
+        
+        if ($users)
+        {
             $this->response($users, 200); // 200 being the HTTP response code
-        } else {
+        } 
+        else 
+        {
             $this->response(array('error' => 'User not found'), 404);
+            
         }
+  
     }
 
 }
