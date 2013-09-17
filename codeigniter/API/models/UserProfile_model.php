@@ -17,12 +17,11 @@ class UserProfile_model extends CI_Model {
 
     function getUsers($limit) {
         if ($limit > 0) 
-        {
-            $limit = (int) $limit;
+        {   
             $sql = "SELECT * FROM user LIMIT 0,?";
             $q = $this->db->conn_id->prepare($sql);
             // Binding
-            $q->bindValue(1, $limit, PDO::PARAM_INT);
+            $q->bindValue(1, intval($limit), PDO::PARAM_INT);
             $q->execute();
             if ($q->rowCount() > 0) 
             {
