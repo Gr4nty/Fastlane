@@ -18,6 +18,7 @@ class UserProfile_model extends CI_Model {
     function getUsers($limit) {
         if ($limit > 0) 
         {
+            $limit = (int) $limit;
             $sql = "SELECT * FROM user LIMIT 0,?";
             $q = $this->db->conn_id->prepare($sql);
             // Binding
@@ -26,8 +27,6 @@ class UserProfile_model extends CI_Model {
             if ($q->rowCount() > 0) 
             {
                 $data = $q->fetchAll(PDO::FETCH_ASSOC);
-                echo 'lol';
-//                return $data;
             }
         }
         else 
@@ -38,9 +37,9 @@ class UserProfile_model extends CI_Model {
             if ($q->rowCount() > 0) 
             {
                 $data = $q->fetchAll(PDO::FETCH_ASSOC);
-                return $data;
             }
          }
+         return $data;
     }
 
     function CreateUser($fbid) {
